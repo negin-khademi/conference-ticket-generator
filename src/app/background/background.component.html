@@ -1,0 +1,26 @@
+<div class="relative min-h-dvh w-full bg-center bg-no-repeat bg-cover bg-[url('/images/background-desktop.png')]">
+  <div class="relative min-h-dvh w-full bg-center bg-no-repeat bg-cover bg-[url('/images/pattern-lines.svg')]">
+
+    <!-- Top-left decoration -->
+    <div
+      class="absolute -top-20 left-10 w-[30%] h-[30%] bg-no-repeat bg-contain bg-[url('/images/pattern-circle.svg')] pointer-events-none">
+    </div>
+    <!-- Top-right decoration -->
+    <div
+      class="absolute top-10 right-0 w-[30%] h-[30%] bg-no-repeat bg-contain bg-[url('/images/pattern-squiggly-line-top.svg')] pointer-events-none">
+    </div>
+    <!-- middle right decoration -->
+    <div
+      class="absolute bottom-30 w-[30%] h-[30%] bg-no-repeat bg-contain bg-[url('/images/pattern-circle.svg')] pointer-events-none">
+    </div>
+    <!-- Bottom-left decoration -->
+    <div
+      class="absolute bottom-0 left-0 w-[50%] h-[50%] bg-no-repeat bg-contain bg-[url('/images/pattern-squiggly-line-bottom-desktop.svg')] pointer-events-none">
+    </div>
+
+    <div class="relative z-10 p-4">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</div>
