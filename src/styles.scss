@@ -6,28 +6,28 @@
 /* src/styles.css or src/styles.scss */
 @font-face {
 	font-family: "Inconsolata"; /* Choose a descriptive name */
-	src: url("assets/fonts/Inconsolata-Regular.ttf") format("truetype");
+	src: url("../public/fonts/Inconsolata-Regular.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: "Inconsolata";
-	src: url("assets/fonts/Inconsolata-Medium.ttf") format("truetype");
+	src: url("../public/fonts/Inconsolata-Medium.ttf") format("truetype");
 	font-weight: 500;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: "Inconsolata";
-	src: url("assets/fonts/Inconsolata-ExtraBold.ttf") format("truetype");
+	src: url("../public/fonts/Inconsolata-ExtraBold.ttf") format("truetype");
 	font-weight: bolder;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: "Inconsolata";
-	src: url("assets/fonts/Inconsolata-Bold.ttf") format("truetype");
+	src: url("../public/fonts/Inconsolata-Bold.ttf") format("truetype");
 	font-weight: 800;
 	font-style: normal;
 }
