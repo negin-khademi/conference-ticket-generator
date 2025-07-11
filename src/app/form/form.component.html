@@ -1,0 +1,96 @@
+<app-background>
+
+  <div class="flex items-center justify-center font-mono">
+    <div class="mx-auto text-center">
+      <!-- logo -->
+      <div class="flex items-center justify-center mt-4">
+        <img src="images/logo-full.svg" class="w-32" alt="logo" />
+      </div>
+      <!-- title -->
+      <div class="grid ">
+        <p class="font-extrabold  text-5xl text-custom_neutral-0 mt-8">{{'your journey to coding conf '
+          | titlecase}}
+        </p>
+        <p class="font-extrabold  text-5xl text-custom_neutral-0 mt-2 mb-4">{{'2025 starts here!'
+          | titlecase}}
+        </p>
+      </div>
+      <p class="text-custom_neutral-300 text-xl">Secure your spot at next year's biggest coding conference.
+      </p>
+    </div>
+  </div>
+
+  <!-- form -->
+  <form>
+    <div class=" flex justify-center text-custom_neutral-0 w-full">
+      <div class="mt-8 w-[30%]">
+
+        <!-- upload image -->
+        <div class="flex flex-col items-center w-full">
+          <div class="w-full max-w-md">
+            <p class="text-custom_neutral-300 mb-3 text-left">{{ 'upload avatar' | titlecase }}</p>
+          </div>
+          <div
+            class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20  shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full">
+            <img class="p-3 bg-custom_neutral-700 rounded-lg w-14" src="images/icon-upload.svg"
+              alt="Sunset in the mountains">
+            <p class="pt-6 text-custom_neutral-500  font-thin text-sm">Drag and drop or click to upload
+            </p>
+          </div>
+          <div class="sub mt-1 flex">
+            <img class="w-3" src="images/icon-info.svg" alt="icon-info" />
+            <p class="text-xxs text-custom_neutral-500 ms-2 ">Upload your photo (JPG or PNG, max size: 500KB)
+            </p>
+          </div>
+
+          <!-- name -->
+          <div class="max-w-md mt-4 w-full">
+            <label for="first_name" class="block  text-sm text-custom_neutral-300 mb-3">{{'full name' |
+              titlecase}}</label>
+            <input type="text" id="first_name"
+              class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
+              placeholder="" required />
+          </div>
+
+          <!-- email -->
+          <div class="w-full max-w-md mt-4">
+            <div>
+              <label for="email" class="block  text-sm text-custom_neutral-300 mb-3">{{'email address' |
+                titlecase}}</label>
+              <input type="email" id="email"
+                class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20 border border-solid border-custom_neutral-500 p-3"
+                placeholder="examlpe@gmail.com" required />
+            </div>
+          </div>
+
+          <!-- github -->
+          <div class="w-full max-w-md mt-4">
+            <div>
+              <label for="github_username" class="block  text-sm text-custom_neutral-300 mb-3">{{'github username' |
+                titlecase}}</label>
+              <input type="text" id="github_username"
+                class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
+                placeholder="@yourUserName" required />
+            </div>
+          </div>
+
+          <div class="w-full max-w-md mt-4">
+            <button
+              class="btn w-full rounded-lg text-custom_neutral-900 font-bold  bg-custom_orange-700  border border-solid border-custom_orange-500 p-3">
+              {{'generate my ticket'|titlecase}}
+            </button>
+          </div>
+        </div>
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </form>
+
+</app-background>
