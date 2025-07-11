@@ -1,11 +1,19 @@
+import { Component, inject } from "@angular/core";
+
 import { BackgroundComponent } from "../background/background.component";
-import { Component } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 import { TitleCasePipe } from "@angular/common";
 
 @Component({
 	selector: "app-form",
-	imports: [BackgroundComponent, TitleCasePipe],
+	imports: [BackgroundComponent, TitleCasePipe, FormsModule],
 	templateUrl: "./form.component.html",
 	styleUrl: "./form.component.scss",
 })
-export class FormComponent {}
+export class FormComponent {
+	private router = inject(Router);
+	onSubmit() {
+		this.router.navigate(["ticket"]);
+	}
+}

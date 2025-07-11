@@ -21,7 +21,7 @@
   </div>
 
   <!-- form -->
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <div class=" flex justify-center text-custom_neutral-0 w-full">
       <div class="mt-8 w-[30%]">
 
@@ -49,7 +49,7 @@
               titlecase}}</label>
             <input type="text" id="first_name"
               class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
-              placeholder="" required />
+              placeholder="" />
           </div>
 
           <!-- email -->
@@ -59,7 +59,7 @@
                 titlecase}}</label>
               <input type="email" id="email"
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20 border border-solid border-custom_neutral-500 p-3"
-                placeholder="examlpe@gmail.com" required />
+                placeholder="examlpe@gmail.com" />
             </div>
           </div>
 
@@ -70,12 +70,12 @@
                 titlecase}}</label>
               <input type="text" id="github_username"
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
-                placeholder="@yourUserName" required />
+                placeholder="@yourUserName" />
             </div>
           </div>
 
           <div class="w-full max-w-md mt-4">
-            <button
+            <button type="submit"
               class="btn w-full rounded-lg text-custom_neutral-900 font-bold  bg-custom_orange-700  border border-solid border-custom_orange-500 p-3">
               {{'generate my ticket'|titlecase}}
             </button>
