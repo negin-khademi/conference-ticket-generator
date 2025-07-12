@@ -1,1 +1,54 @@
-<p>ticket works!</p>
+<app-background>
+  <div class="font-mono">
+    <div class="flex items-center justify-center">
+      <div class="mx-auto text-center mb-8">
+        <!-- logo -->
+        <div class="flex items-center justify-center mt-6">
+          <img src="images/logo-full.svg" class="w-32" alt="logo" />
+        </div>
+
+        <!-- title -->
+        <div class="font-extrabold text-5xl mt-[5%]">
+          <span class="text-custom_neutral-0">Congrats</span>
+          <span class="bg-text-gradient bg-clip-text text-transparent">
+            {{'jonatan kristof!' | titlecase}}
+          </span>
+          <p class="font-extrabold  text-5xl text-custom_neutral-0 mt-2 mb-4">Your ticket is ready.
+          </p>
+        </div>
+
+        <!-- email part -->
+        <div class="flex justify-center mt-3">
+          <p class="text-custom_neutral-500 text-lg w-[40%] font-hairline">We've emailed your ticket to <span
+              class="text-custom_orange-500 opacity-80">jonatan&#64;email.com
+            </span>and will send updates in the run up to the events.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- image -->
+    <div class="flex justify-center w-full second">
+      <div
+        class=" mt-[2%] max-w-lg w-[33.5%] h-auto bg-center bg-no-repeat bg-cover bg-[url('/images/pattern-ticket.svg')]  pointer-events-none">
+        <div>
+          <img src="/images/logo-full.svg" class="w-64 pt-6 pl-6" alt="logo" />
+
+          <p class="text-custom_neutral-500 ml-[17%] font-normal text-xs mt-4"> {{ currentDateTime | date:'MMM d, y' }}
+            ,
+            Austin Tx</p>
+        </div>
+        <div class="p-6 flex">
+          <img src="images/image-avatar.jpg" class="w-24 rounded-lg" alt="personal-image" />
+          <div class="ml-3 text-custom_neutral-300 flex flex-col justify-center">
+            <p class="text-xl font-thin">{{'jonatan kristof' |titlecase }}</p>
+            <div class="flex justify-center items-center">
+              <img src="images/icon-github.svg" class="w-6 rounded-lg" alt="github logo" />
+              <p class="ml-2">{{'@jonatankristof0101'}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-background>
