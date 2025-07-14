@@ -50,7 +50,7 @@ export class FormComponent {
 		};
 		const dataFromForm = dataToSend;
 		this.dataTransferService.changeData(dataFromForm);
-		console.log(dataFromForm);
-		// this.router.navigate(["ticket"]);
+
+		this.router.navigate(["ticket"]);
 	}
 }
