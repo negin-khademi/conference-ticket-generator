@@ -33,12 +33,12 @@
           <div
             class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20  shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full">
             <input #imageInput type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden">
-            <img class=" bg-custom_neutral-700 rounded-lg
+            <img class=" bg-custom_neutral-700 rounded-lg cursor-pointer
             {{ url ? 'p-0 w-14 h-14 object-cover' : 'p-3 w-14' }}
             " [src]="url || 'images/icon-upload.svg'" alt="Sunset in the mountains" (click)="imageInput.click()">
             @if(!url){
             <p class="pt-6 text-custom_neutral-500  font-thin text-sm">
-              'Drag and drop or click to upload
+              Drag and drop or click to upload
             </p>}
             @if(url){
             <div class="flex gap-x-2 mt-2">
@@ -48,7 +48,7 @@
                 image</label>
               <label type="button"
                 class="text-xxs cursor-pointer p-2 bg-custom_neutral-700 bg-opacity-15 text-custom_neutral-500 rounded-lg"
-                (click)="onChangeImage()">change image</label>
+                (click)="imageInput.click()">change image</label>
 
             </div>
             }

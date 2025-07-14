@@ -38,7 +38,9 @@ export class FormComponent {
 	onRemoveImage() {
 		this.url = "";
 	}
-	onChangeImage() {}
+	onChangeImage() {
+		this.onFileSelected(event);
+	}
 	onSubmit() {
 		const dataToSend = {
 			image: this.url,
