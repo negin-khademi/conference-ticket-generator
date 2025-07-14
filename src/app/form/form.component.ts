@@ -23,7 +23,7 @@ export class FormComponent {
 	constructor(private dataTransferService: DataTransferService) {}
 
 	sendData() {}
-
+	// upload file from local
 	onFileSelected(event: any) {
 		let reader = new FileReader();
 		if (event.target.files && event.target.files.length > 0) {
@@ -35,6 +35,10 @@ export class FormComponent {
 		}
 	}
 
+	onRemoveImage() {
+		this.url = "";
+	}
+	onChangeImage() {}
 	onSubmit() {
 		const dataToSend = {
 			image: this.url,

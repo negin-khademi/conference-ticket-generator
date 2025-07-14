@@ -36,9 +36,22 @@
             <img class=" bg-custom_neutral-700 rounded-lg
             {{ url ? 'p-0 w-14 object-cover' : 'p-3 w-14' }}
             " [src]="url || 'images/icon-upload.svg'" alt="Sunset in the mountains" (click)="imageInput.click()">
+            @if(!url){
             <p class="pt-6 text-custom_neutral-500  font-thin text-sm">
-              {{fileName ||'Drag and drop or click to upload'}}
-            </p>
+              'Drag and drop or click to upload
+            </p>}
+            @if(url){
+            <div class="flex gap-x-2 mt-2">
+              <label type="button"
+                class=" text-xxs cursor-pointer p-2 bg-custom_neutral-700 bg-opacity-15 text-custom_neutral-500 rounded-lg"
+                (click)="onRemoveImage()">remove
+                image</label>
+              <label type="button"
+                class="text-xxs cursor-pointer p-2 bg-custom_neutral-700 bg-opacity-15 text-custom_neutral-500 rounded-lg"
+                (click)="onChangeImage()">change image</label>
+
+            </div>
+            }
           </div>
           <div class="sub mt-1 flex">
             <img class="w-3" src="images/icon-info.svg" alt="icon-info" />
