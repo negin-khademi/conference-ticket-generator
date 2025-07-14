@@ -14,16 +14,30 @@ import { TitleCasePipe } from "@angular/common";
 })
 export class FormComponent {
 	private router = inject(Router);
-
+	url!: any;
 	name!: string;
 	emailAdress!: string;
 	gitHubAccount!: string;
+
+	fileName = "";
 	constructor(private dataTransferService: DataTransferService) {}
 
 	sendData() {}
 
+	onFileSelected(event: any) {
+		let reader = new FileReader();
+		if (event.target.files && event.target.files.length > 0) {
+			let file = event.target.files[0];
+			reader.readAsDataURL(file);
+			reader.onload = () => {
+				this.url = reader.result;
+			};
+		}
+	}
+
 	onSubmit() {
 		const dataToSend = {
+			image: this.url,
 			name: this.name,
 			emailAddress: this.emailAdress,
 			gitHubAccount: this.gitHubAccount,
