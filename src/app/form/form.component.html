@@ -34,7 +34,7 @@
             class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20  shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full">
             <input #imageInput type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden">
             <img class=" bg-custom_neutral-700 rounded-lg
-            {{ url ? 'p-0 w-14 object-cover' : 'p-3 w-14' }}
+            {{ url ? 'p-0 w-14 h-14 object-cover' : 'p-3 w-14' }}
             " [src]="url || 'images/icon-upload.svg'" alt="Sunset in the mountains" (click)="imageInput.click()">
             @if(!url){
             <p class="pt-6 text-custom_neutral-500  font-thin text-sm">
