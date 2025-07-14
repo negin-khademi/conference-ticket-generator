@@ -21,12 +21,12 @@
   </div>
 
   <!-- form -->
-  <form (ngSubmit)="onSubmit()">
+  <form #dataForm="ngForm" (ngSubmit)="onSubmit(dataForm)">
     <div class=" flex justify-center text-custom_neutral-0 w-full">
       <div class="mt-8 w-[30%]">
 
         <!-- upload image -->
-        <div class="flex flex-col items-center w-full">
+        <div class="flex flex-col  w-full">
           <div class="w-full max-w-md">
             <p class="text-custom_neutral-300 mb-3 text-left">{{ 'upload avatar' | titlecase }}</p>
           </div>
@@ -36,10 +36,6 @@
             <img class=" bg-custom_neutral-700 rounded-lg cursor-pointer
             {{ url ? 'p-0 w-14 h-14 object-cover' : 'p-3 w-14' }}
             " [src]="url || 'images/icon-upload.svg'" alt="Sunset in the mountains" (click)="imageInput.click()">
-            @if(!url){
-            <p class="pt-6 text-custom_neutral-500  font-thin text-sm">
-              Drag and drop or click to upload
-            </p>}
             @if(url){
             <div class="flex gap-x-2 mt-2">
               <label type="button"
@@ -49,46 +45,68 @@
               <label type="button"
                 class="text-xxs cursor-pointer p-2 bg-custom_neutral-700 bg-opacity-15 text-custom_neutral-500 rounded-lg"
                 (click)="imageInput.click()">change image</label>
-
             </div>
             }
           </div>
-          <div class="sub mt-1 flex">
-            <img class="w-3" src="images/icon-info.svg" alt="icon-info" />
+          <div class="sub mt-1 flex justify-start">
+            <img class="w-3 {{url ? 'color-custom_orange-700': 'color-custom_neutral-700'}}" src="images/icon-info.svg"
+              alt="icon-info" />
+            @if(!url && submitted){
+            <p class="text-xxs text-custom_orange-700 ms-2 ">Please upload an image. Image is required.
+            </p>}
+            @else if(url || !submitted){
             <p class="text-xxs text-custom_neutral-500 ms-2 ">Upload your photo (JPG or PNG, max size: 500KB)
             </p>
+            }
+
           </div>
 
           <!-- name -->
           <div class="max-w-md mt-4 w-full">
             <label for="first_name" class="block  text-sm text-custom_neutral-300 mb-3">{{'full name' |
               titlecase}}</label>
-            <input [(ngModel)]="name" name="name" type="text" id="first_name"
+            <input [(ngModel)]="name" name="name" type="text" id="first_name" required
               class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
               placeholder="" />
           </div>
+          @if(!name && submitted){
+          <p class="text-xxs text-custom_orange-700 ms-2 ">Please enter your name. name is required.
+          </p>}
 
           <!-- email -->
           <div class="w-full max-w-md mt-4">
             <div>
               <label for="email" class="block  text-sm text-custom_neutral-300 mb-3">{{'email address' |
                 titlecase}}</label>
-              <input [(ngModel)]="emailAdress" name="emailAdress" type="email" id="email"
+              <input [(ngModel)]="emailAdress" #email="ngModel" name="emailAdress" type="email" id="email" required
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20 border border-solid border-custom_neutral-500 p-3"
                 placeholder="examlpe@gmail.com" />
             </div>
           </div>
+
+          @if(submitted && email.invalid){
+          <div class="text-xxs text-custom_orange-700 mt-1 ms-2">
+            @if(email.errors?.['required']){
+            <p>Email is required.</p>
+            } @else if(email.errors?.['email']){
+            <p>Please enter a valid email address.</p>
+            }
+          </div>
+          }
 
           <!-- github -->
           <div class="w-full max-w-md mt-4">
             <div>
               <label for="github_username" class="block  text-sm text-custom_neutral-300 mb-3">{{'github username' |
                 titlecase}}</label>
-              <input [(ngModel)]="gitHubAccount" name="gitHubAccount" type="text" id="github_username"
+              <input [(ngModel)]="gitHubAccount" name="gitHubAccount" type="text" id="github_username" required
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
                 placeholder="@yourUserName" />
             </div>
           </div>
+          @if(!gitHubAccount && submitted){
+          <p class="text-xxs text-custom_orange-700 ms-2 ">Please enter your github username. It's is required.
+          </p>}
 
           <div class="w-full max-w-md mt-4">
             <button type="submit"

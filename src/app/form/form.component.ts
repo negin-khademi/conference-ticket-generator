@@ -1,14 +1,14 @@
+import { CommonModule, TitleCasePipe } from "@angular/common";
 import { Component, inject } from "@angular/core";
+import { FormsModule, NgForm } from "@angular/forms";
 
 import { BackgroundComponent } from "../background/background.component";
 import { DataTransferService } from "./../shared/services/data-transfer.service";
-import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
-import { TitleCasePipe } from "@angular/common";
 
 @Component({
 	selector: "app-form",
-	imports: [BackgroundComponent, TitleCasePipe, FormsModule],
+	imports: [BackgroundComponent, TitleCasePipe, FormsModule, CommonModule],
 	templateUrl: "./form.component.html",
 	styleUrl: "./form.component.scss",
 })
@@ -18,6 +18,8 @@ export class FormComponent {
 	name!: string;
 	emailAdress!: string;
 	gitHubAccount!: string;
+
+	submitted: boolean = false;
 
 	fileName = "";
 	constructor(private dataTransferService: DataTransferService) {}
@@ -41,7 +43,10 @@ export class FormComponent {
 	onChangeImage() {
 		this.onFileSelected(event);
 	}
-	onSubmit() {
+	onSubmit(form: NgForm) {
+		this.submitted = true;
+		if (form.invalid) return;
+
 		const dataToSend = {
 			image: this.url,
 			name: this.name,
