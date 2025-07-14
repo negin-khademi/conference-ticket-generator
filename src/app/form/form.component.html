@@ -47,7 +47,7 @@
           <div class="max-w-md mt-4 w-full">
             <label for="first_name" class="block  text-sm text-custom_neutral-300 mb-3">{{'full name' |
               titlecase}}</label>
-            <input type="text" id="first_name"
+            <input [(ngModel)]="name" name="name" type="text" id="first_name"
               class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
               placeholder="" />
           </div>
@@ -57,7 +57,7 @@
             <div>
               <label for="email" class="block  text-sm text-custom_neutral-300 mb-3">{{'email address' |
                 titlecase}}</label>
-              <input type="email" id="email"
+              <input [(ngModel)]="emailAdress" name="emailAdress" type="email" id="email"
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20 border border-solid border-custom_neutral-500 p-3"
                 placeholder="examlpe@gmail.com" />
             </div>
@@ -68,7 +68,7 @@
             <div>
               <label for="github_username" class="block  text-sm text-custom_neutral-300 mb-3">{{'github username' |
                 titlecase}}</label>
-              <input type="text" id="github_username"
+              <input [(ngModel)]="gitHubAccount" name="gitHubAccount" type="text" id="github_username"
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
                 placeholder="@yourUserName" />
             </div>
