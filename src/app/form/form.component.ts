@@ -1,6 +1,12 @@
 import { CommonModule, TitleCasePipe } from "@angular/common";
 import { Component, inject } from "@angular/core";
-import { FormsModule, NgForm } from "@angular/forms";
+import {
+	FormControl,
+	FormGroup,
+	FormsModule,
+	ReactiveFormsModule,
+	Validators,
+} from "@angular/forms";
 
 import { BackgroundComponent } from "../background/background.component";
 import { DataTransferService } from "./../shared/services/data-transfer.service";
@@ -8,17 +14,25 @@ import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-form",
-	imports: [BackgroundComponent, TitleCasePipe, FormsModule, CommonModule],
+	imports: [
+		BackgroundComponent,
+		TitleCasePipe,
+		FormsModule,
+		CommonModule,
+		ReactiveFormsModule,
+	],
 	templateUrl: "./form.component.html",
 	styleUrl: "./form.component.scss",
 })
 export class FormComponent {
 	private router = inject(Router);
-	url!: any;
-	name!: string;
-	emailAdress!: string;
-	gitHubAccount!: string;
 
+	dataForm = new FormGroup({
+		url: new FormControl("", Validators.required),
+		name: new FormControl("", Validators.required),
+		emailAddress: new FormControl("", [Validators.required, Validators.email]),
+		gitHubAccount: new FormControl("", Validators.required),
+	});
 	submitted: boolean = false;
 
 	fileName = "";
@@ -30,30 +44,50 @@ export class FormComponent {
 		let reader = new FileReader();
 		if (event.target.files && event.target.files.length > 0) {
 			let file = event.target.files[0];
+
+			if (file) {
+				const maxSizeInKB = 50;
+
+				if (file.size > maxSizeInKB * 1024) {
+					// Image is too large
+					this.dataForm.get("url")?.setErrors({ tooLarge: true });
+					return;
+				}
+			}
+
 			reader.readAsDataURL(file);
 			reader.onload = () => {
-				this.url = reader.result;
+				this.dataForm.get("url")?.setValue(reader.result as string);
 			};
 		}
 	}
 
+	get urlControl() {
+		return this.dataForm.get("url");
+	}
+	get nameControl() {
+		return this.dataForm.get("name");
+	}
+	get emailControl() {
+		return this.dataForm.get("emailAddress");
+	}
+	get gitControl() {
+		return this.dataForm.get("gitHubAccount");
+	}
+
 	onRemoveImage() {
-		this.url = "";
+		this.dataForm.get("url")?.setValue("");
 	}
 	onChangeImage() {
 		this.onFileSelected(event);
 	}
-	onSubmit(form: NgForm) {
+	onSubmit() {
 		this.submitted = true;
-		if (form.invalid) return;
-
-		const dataToSend = {
-			image: this.url,
-			name: this.name,
-			emailAddress: this.emailAdress,
-			gitHubAccount: this.gitHubAccount,
-		};
-		const dataFromForm = dataToSend;
+		if (this.dataForm.invalid) {
+			this.dataForm.markAllAsTouched();
+			return;
+		}
+		const dataFromForm = this.dataForm;
 		this.dataTransferService.changeData(dataFromForm);
 
 		this.router.navigate(["ticket"]);

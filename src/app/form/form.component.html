@@ -21,7 +21,7 @@
   </div>
 
   <!-- form -->
-  <form #dataForm="ngForm" (ngSubmit)="onSubmit(dataForm)">
+  <form #dataForm="ngForm" (ngSubmit)="onSubmit()">
     <div class=" flex justify-center text-custom_neutral-0 w-full">
       <div class="mt-8 w-[30%]">
 
@@ -34,9 +34,10 @@
             class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20  shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full">
             <input #imageInput type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden">
             <img class=" bg-custom_neutral-700 rounded-lg cursor-pointer
-            {{ url ? 'p-0 w-14 h-14 object-cover' : 'p-3 w-14' }}
-            " [src]="url || 'images/icon-upload.svg'" alt="Sunset in the mountains" (click)="imageInput.click()">
-            @if(url){
+            {{ urlControl?.value ? 'p-0 w-14 h-14 object-cover' : 'p-3 w-14' }}
+            " [src]="urlControl?.value || 'images/icon-upload.svg'" alt="Sunset in the mountains"
+              (click)="imageInput.click()">
+            @if(urlControl?.value){
             <div class="flex gap-x-2 mt-2">
               <label type="button"
                 class=" text-xxs cursor-pointer p-2 bg-custom_neutral-700 bg-opacity-15 text-custom_neutral-500 rounded-lg"
@@ -49,12 +50,15 @@
             }
           </div>
           <div class="sub mt-1 flex justify-start">
-            <img class="w-3 {{url ? 'color-custom_orange-700': 'color-custom_neutral-700'}}" src="images/icon-info.svg"
-              alt="icon-info" />
-            @if(!url && submitted){
+            <img class="w-3 {{urlControl?.value ? 'color-custom_orange-700': 'color-custom_neutral-700'}}"
+              src="images/icon-info.svg" alt="icon-info" />
+            @if(urlControl?.errors?.['tooLarge']){
+            <p class="text-xxs text-custom_orange-700 ms-2">Image must be smaller than 50KB.</p>
+            }
+            @else if(!urlControl?.value && submitted){
             <p class="text-xxs text-custom_orange-700 ms-2 ">Please upload an image. Image is required.
             </p>}
-            @else if(url || !submitted){
+            @else if(urlControl?.value || !submitted){
             <p class="text-xxs text-custom_neutral-500 ms-2 ">Upload your photo (JPG or PNG, max size: 500KB)
             </p>
             }
@@ -65,11 +69,11 @@
           <div class="max-w-md mt-4 w-full">
             <label for="first_name" class="block  text-sm text-custom_neutral-300 mb-3">{{'full name' |
               titlecase}}</label>
-            <input [(ngModel)]="name" name="name" type="text" id="first_name" required
+            <input formControlName="name" name="name" type="text" id="first_name" required
               class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
               placeholder="" />
           </div>
-          @if(!name && submitted){
+          @if(nameControl?.hasError('required') && submitted){
           <p class="text-xxs text-custom_orange-700 ms-2 ">Please enter your name. name is required.
           </p>}
 
@@ -78,13 +82,13 @@
             <div>
               <label for="email" class="block  text-sm text-custom_neutral-300 mb-3">{{'email address' |
                 titlecase}}</label>
-              <input [(ngModel)]="emailAdress" #email="ngModel" name="emailAdress" type="email" id="email" required
+              <input formControlName="email" name="emailAdress" type="email" id="email" required
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20 border border-solid border-custom_neutral-500 p-3"
                 placeholder="examlpe@gmail.com" />
             </div>
           </div>
 
-          @if(submitted && email.invalid){
+          <!-- @if(submitted && email.invalid){
           <div class="text-xxs text-custom_orange-700 mt-1 ms-2">
             @if(email.errors?.['required']){
             <p>Email is required.</p>
@@ -92,19 +96,21 @@
             <p>Please enter a valid email address.</p>
             }
           </div>
-          }
+          } -->
+          <div *ngIf="dataForm.controls['emailAdress']?.errors?.['required']">Email is required.</div>
+          <div *ngIf="dataForm.controls['emailAdress']?.errors?.['email']">Invalid email format.</div>
 
           <!-- github -->
           <div class="w-full max-w-md mt-4">
             <div>
               <label for="github_username" class="block  text-sm text-custom_neutral-300 mb-3">{{'github username' |
                 titlecase}}</label>
-              <input [(ngModel)]="gitHubAccount" name="gitHubAccount" type="text" id="github_username" required
+              <input formControlName="gitHubAccount" type="text" id="github_username" required
                 class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
                 placeholder="@yourUserName" />
             </div>
           </div>
-          @if(!gitHubAccount && submitted){
+          @if(!gitControl && submitted){
           <p class="text-xxs text-custom_orange-700 ms-2 ">Please enter your github username. It's is required.
           </p>}
 
