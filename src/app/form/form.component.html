@@ -112,10 +112,13 @@
                 placeholder="@yourUserName" />
             </div>
           </div>
-          @if(!gitControl && submitted){
-          <p class="text-xxs text-custom_orange-700 ms-2 ">Please enter your github username. It's is required.
-          </p>}
-
+          @if((gitControl?.touched || submitted) && gitControl?.invalid) {
+          @if(gitControl?.hasError('required')){
+          <p class="text-xxs text-custom_orange-700 ms-2">Please enter your github username. It's is required.
+          </p>}@if (gitControl?.hasError('notFound')) {
+          <p class="text-xxs text-custom_orange-700 ms-2">GitHub username not found.</p>
+          }
+          }
           <div class="w-full max-w-md mt-4">
             <button type="submit"
               class="btn w-full rounded-lg text-custom_neutral-900 font-bold  bg-custom_orange-700  border border-solid border-custom_orange-500 p-3">

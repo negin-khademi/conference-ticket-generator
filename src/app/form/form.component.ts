@@ -10,6 +10,7 @@ import {
 
 import { BackgroundComponent } from "../background/background.component";
 import { DataTransferService } from "./../shared/services/data-transfer.service";
+import { HttpClientModule } from "@angular/common/http";
 import { Router } from "@angular/router";
 
 @Component({
@@ -20,6 +21,7 @@ import { Router } from "@angular/router";
 		FormsModule,
 		CommonModule,
 		ReactiveFormsModule,
+		HttpClientModule,
 	],
 	templateUrl: "./form.component.html",
 	styleUrl: "./form.component.scss",
@@ -75,6 +77,25 @@ export class FormComponent {
 		return this.dataForm.get("gitHubAccount");
 	}
 
+	checkGitValidation() {
+		const username = this.gitControl?.value || "";
+
+		this.dataTransferService.gitHubChecked(username).subscribe({
+			next: (res) => {
+				// Optional: remove any existing error
+				console.log(res);
+				this.gitControl?.setErrors(null);
+			},
+			error: (err) => {
+				if (err.status === 404) {
+					this.gitControl?.setErrors({ notFound: true });
+				} else {
+					console.error("GitHub validation failed", err);
+				}
+			},
+		});
+	}
+
 	onRemoveImage() {
 		this.dataForm.get("url")?.setValue("");
 	}
@@ -83,10 +104,12 @@ export class FormComponent {
 	}
 	onSubmit() {
 		this.submitted = true;
+		this.checkGitValidation();
 		if (this.dataForm.invalid) {
 			this.dataForm.markAllAsTouched();
 			return;
 		}
+
 		const dataFromForm = this.dataForm;
 		this.dataTransferService.changeData(dataFromForm);
 
