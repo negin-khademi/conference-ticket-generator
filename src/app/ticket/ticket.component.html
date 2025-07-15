@@ -8,18 +8,18 @@
         </div>
 
         <!-- title -->
-        <div class="font-extrabold text-5xl mt-[5%]">
-          <span class="text-custom_neutral-0">Congrats</span>
-          <span class="bg-text-gradient bg-clip-text text-transparent">
-            {{receiveData?.value.name |titlecase}}!
-          </span>
-          <p class="font-extrabold  text-5xl text-custom_neutral-0 mt-2 mb-4">Your ticket is ready.
+        <div class="md:flex md:justify-center md:mx-auto font-extrabold text-3xl md:text-5xl md:w-[50%] mt-[5%]">
+          <p class="text-custom_neutral-0">Congrats,
+            <span class="bg-text-gradient bg-clip-text text-transparent">
+              {{receiveData?.value.name |titlecase}}!
+            </span>
+            Your ticket is ready.
           </p>
         </div>
 
         <!-- email part -->
         <div class="flex justify-center mt-3">
-          <p class="text-custom_neutral-500 text-lg w-[40%] font-hairline">We've emailed your ticket to <span
+          <p class="text-custom_neutral-500 text-lg w-full md:w-[40%] font-hairline">We've emailed your ticket to <span
               class="text-custom_orange-500 opacity-80">{{receiveData?.value.emailAddress}}
             </span>and will send updates in the run up to the events.
           </p>
@@ -30,23 +30,29 @@
     <!-- image -->
     <div class="flex justify-center w-full second">
       <div
-        class=" mt-[2%] max-w-lg w-[33.5%] h-auto bg-center bg-no-repeat bg-cover bg-[url('/images/pattern-ticket.svg')]  pointer-events-none">
-        <div class="relative">
-          <div class="absolute right-5 transform rotate-90 text-custom_neutral-500 text-xl top-[100%]">#01609</div>
-          <img src="/images/logo-full.svg" class="w-64 pt-6 pl-6" alt="logo" />
+        class=" md:mt-[2%] max-w-lg w-full md:w-[33.5%] h-auto bg-center bg-no-repeat bg-contain md:bg-cover bg-[url('/images/pattern-ticket.svg')] pointer-events-none">
+        <div class="relative pl-6">
+          <div
+            class="absolute right-2 md:right-5 transform rotate-90 text-custom_neutral-500 text-xl top-[110%] md:top-[100%]">
+            #01609
+          </div>
+          <img src="/images/logo-full.svg" class="w-40 pt-4 md:w-64 md:pt-6 md:pl-6" alt="logo" />
 
-          <p class="text-custom_neutral-500 ml-[17%] font-normal text-xs mt-4"> {{ currentDateTime | date:'MMM d, y' }}
+          <p class="text-custom_neutral-500  pl-11 md:pl-0 md:ml-[17%] font-normal text-xs md:mt-4"> {{ currentDateTime
+            |
+            date:'MMM d, y'
+            }}
             ,
             Austin Tx</p>
         </div>
-        <div class="p-6 flex">
+        <div class="p-6 flex items-center">
           <img [src]="receiveData.value.url ? receiveData.value.url:'images/image-avatar.jpg'"
-            class="w-24  h-24 object-cover rounded-lg" alt="personal-image" />
+            class="w-10 h-10 md:w-20 md:h-20 object-cover rounded-lg" alt="personal-image" />
           <div class="ml-3 text-custom_neutral-300 flex flex-col justify-center">
             <p class="text-xl font-thin">{{'jonatan kristof' |titlecase }}</p>
             <div class="flex items-center">
-              <img src="images/icon-github.svg" class="w-6 rounded-lg" alt="github logo" />
-              <p class="ml-2">{{receiveData?.value.gitHubAccount}}</p>
+              <img src="images/icon-github.svg" class="w-3 md:w-6 rounded-lg" alt="github logo" />
+              <p class="md:ml-2">{{receiveData?.value.gitHubAccount}}</p>
             </div>
           </div>
         </div>
