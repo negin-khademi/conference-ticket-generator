@@ -12,7 +12,7 @@
           <span class="text-custom_neutral-0">Congrats</span>
           <span class="bg-text-gradient bg-clip-text text-transparent">
             <!-- {{receiveData | titlecase}}! -->
-            {{receiveData?.name |titlecase}}
+            {{receiveData?.value.name |titlecase}}
           </span>
           <p class="font-extrabold  text-5xl text-custom_neutral-0 mt-2 mb-4">Your ticket is ready.
           </p>
@@ -21,7 +21,7 @@
         <!-- email part -->
         <div class="flex justify-center mt-3">
           <p class="text-custom_neutral-500 text-lg w-[40%] font-hairline">We've emailed your ticket to <span
-              class="text-custom_orange-500 opacity-80">{{receiveData?.emailAddress}}
+              class="text-custom_orange-500 opacity-80">{{receiveData?.value.emailAddress}}
             </span>and will send updates in the run up to the events.
           </p>
         </div>
@@ -41,13 +41,13 @@
             Austin Tx</p>
         </div>
         <div class="p-6 flex">
-          <img [src]="receiveData? receiveData.image:'images/image-avatar.jpg'" class="w-24 rounded-lg"
-            alt="personal-image" />
+          <img [src]="receiveData.value.url ? receiveData.value.url:'images/image-avatar.jpg'"
+            class="w-24  h-24 object-cover rounded-lg" alt="personal-image" />
           <div class="ml-3 text-custom_neutral-300 flex flex-col justify-center">
             <p class="text-xl font-thin">{{'jonatan kristof' |titlecase }}</p>
             <div class="flex items-center">
               <img src="images/icon-github.svg" class="w-6 rounded-lg" alt="github logo" />
-              <p class="ml-2">{{receiveData?.gitHubAccount}}</p>
+              <p class="ml-2">{{receiveData?.value.gitHubAccount}}</p>
             </div>
           </div>
         </div>
