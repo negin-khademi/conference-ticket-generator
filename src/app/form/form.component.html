@@ -69,11 +69,13 @@
           <div class="max-w-md mt-4 w-full">
             <label for="first_name" class="block  text-sm text-custom_neutral-300 mb-3">{{'full name' |
               titlecase}}</label>
-            <input name="name" type="text" id="first_name" required
+            <input formControlName="name" name="name" type="text" id="first_name" required
               class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
               placeholder="" />
           </div>
-          @if(nameControl?.hasError('required') && submitted){
+
+          @if((nameControl?.touched || submitted) && (nameControl?.hasError('required'))){
+
           <p class="text-xxs text-custom_orange-700 ms-2 ">Please enter your name. name is required.
           </p>}
 
