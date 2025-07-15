@@ -7,15 +7,16 @@
         <img src="images/logo-full.svg" class="w-32" alt="logo" />
       </div>
       <!-- title -->
-      <div class="grid ">
-        <p class="font-extrabold  text-5xl text-custom_neutral-0 mt-8">{{'your journey to coding conf '
-          | titlecase}}
-        </p>
-        <p class="font-extrabold  text-5xl text-custom_neutral-0 mt-2 mb-4">{{'2025 starts here!'
+      <div class="mb-5 md:flex md:justify-center ">
+        <p class="text-3xl md:font-extrabold md:text-5xl text-custom_neutral-0 mt-8 md:w-[60%]">{{'your journey to
+          coding
+          conf 2025
+          starts here!'
           | titlecase}}
         </p>
       </div>
-      <p class="text-custom_neutral-300 text-xl">Secure your spot at next year's biggest coding conference.
+
+      <p class="text-custom_neutral-500 text-xl">Secure your spot at next year's biggest coding conference.
       </p>
     </div>
   </div>
@@ -23,14 +24,14 @@
   <!-- form -->
   <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
     <div class=" flex justify-center text-custom_neutral-0 w-full">
-      <div class="mt-8 w-[30%]">
-        <div class="flex flex-col  w-full">
+      <div class="w-full mt-8 md:w-[30%]">
+        <div class="flex flex-col w-full">
           <div class="w-full max-w-md">
             <p class="text-custom_neutral-300 mb-3 text-left">{{ 'upload avatar' | titlecase }}</p>
           </div>
           <!-- upload image -->
           <div
-            class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20  shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full">
+            class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20 shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full">
             <input #imageInput type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden">
             <img class=" bg-custom_neutral-700 rounded-lg cursor-pointer
             {{ urlControl?.value ? 'p-0 w-14 h-14 object-cover' : 'p-3 w-14' }}
@@ -100,8 +101,6 @@
             }
           </div>
           }
-
-
           <!-- github -->
           <div class="w-full max-w-md mt-4">
             <div>

@@ -103,8 +103,8 @@ export class FormComponent {
 		this.onFileSelected(event);
 	}
 	onSubmit() {
-		this.submitted = true;
 		this.checkGitValidation();
+		this.submitted = true;
 		if (this.dataForm.invalid) {
 			this.dataForm.markAllAsTouched();
 			return;
