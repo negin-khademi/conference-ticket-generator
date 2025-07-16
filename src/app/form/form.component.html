@@ -32,7 +32,7 @@
           </div>
           <!-- upload image -->
           <div
-            class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20 shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full">
+            class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20 shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full focus:outline focus:outline-1 focus:outline-custom_neutral-300 focus:outline-offset-2">
             <input #imageInput type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden">
             <img class=" bg-custom_neutral-700 rounded-lg cursor-pointer
             {{ urlControl?.value ? 'p-0 w-14 h-14 object-cover' : 'p-3 w-14' }}
@@ -72,7 +72,7 @@
             <label for="first_name" class="block  text-sm text-custom_neutral-300 mb-3">{{'full name' |
               titlecase}}</label>
             <input formControlName="name" name="name" type="text" id="first_name" required
-              class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
+              class="focus:outline focus:outline-1 focus:outline-custom_neutral-300 focus:outline-offset-2 w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
               placeholder="" />
           </div>
 
@@ -84,10 +84,10 @@
           <!-- email -->
           <div class="w-full max-w-md mt-4">
             <div>
-              <label for="email" class="block  text-sm text-custom_neutral-300 mb-3">{{'email address' |
+              <label for="email" class="block text-sm text-custom_neutral-300 mb-3">{{'email address' |
                 titlecase}}</label>
               <input formControlName="emailAddress" name="emailAdress" type="email" id="email" required
-                class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20 border border-solid border-custom_neutral-500 p-3"
+                class="focus:outline focus:outline-1 focus:outline-custom_neutral-300 focus:outline-offset-2 w-full rounded-lg bg-custom_neutral-500 focus:bg-custom_neutral-700 bg-opacity-20 border border-solid border-custom_neutral-500 p-3"
                 placeholder="examlpe@gmail.com" />
             </div>
           </div>
@@ -108,7 +108,7 @@
               <label for="github_username" class="block  text-sm text-custom_neutral-300 mb-3">{{'github username' |
                 titlecase}}</label>
               <input formControlName="gitHubAccount" type="text" id="github_username" required
-                class="w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
+                class="focus:outline focus:outline-1 focus:outline-custom_neutral-300 focus:outline-offset-2 w-full rounded-lg bg-custom_neutral-500 bg-opacity-20  border border-solid border-custom_neutral-500 p-3"
                 placeholder="@yourUserName" />
             </div>
           </div>
