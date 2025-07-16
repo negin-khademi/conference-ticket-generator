@@ -11,6 +11,7 @@ import {
 import { BackgroundComponent } from "../background/background.component";
 import { DataTransferService } from "./../shared/services/data-transfer.service";
 import { HttpClientModule } from "@angular/common/http";
+import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 
 @Component({
@@ -77,23 +78,9 @@ export class FormComponent {
 		return this.dataForm.get("gitHubAccount");
 	}
 
-	checkGitValidation() {
+	checkGitValidation(): Observable<any> {
 		const username = this.gitControl?.value || "";
-
-		this.dataTransferService.gitHubChecked(username).subscribe({
-			next: (res) => {
-				// Optional: remove any existing error
-				console.log(res);
-				this.gitControl?.setErrors(null);
-			},
-			error: (err) => {
-				if (err.status === 404) {
-					this.gitControl?.setErrors({ notFound: true });
-				} else {
-					console.error("GitHub validation failed", err);
-				}
-			},
-		});
+		return this.dataTransferService.gitHubChecked(username);
 	}
 
 	onRemoveImage() {
@@ -103,16 +90,25 @@ export class FormComponent {
 		this.onFileSelected(event);
 	}
 	onSubmit() {
-		this.checkGitValidation();
-		this.submitted = true;
 		if (this.dataForm.invalid) {
 			this.dataForm.markAllAsTouched();
 			return;
 		}
 
-		const dataFromForm = this.dataForm;
-		this.dataTransferService.changeData(dataFromForm);
+		this.submitted = true;
 
-		this.router.navigate(["ticket"]);
+		this.checkGitValidation().subscribe({
+			next: (res) => {
+				this.gitControl?.setErrors(null); // clear error
+				this.dataTransferService.changeData(this.dataForm);
+				this.router.navigate(["ticket"]); // ✅ navigate only after success
+			},
+			error: (err) => {
+				if (err.status === 404) {
+					this.gitControl?.setErrors({ notFound: true });
+					this.submitted = false; // ❌ don't navigate
+				}
+			},
+		});
 	}
 }

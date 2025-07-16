@@ -14,7 +14,6 @@ export class DataTransferService {
 
 	changeData(data: any) {
 		this.dataSorce.next(data);
-		console.log(data.value.url);
 	}
 
 	gitHubChecked(username: string): Observable<any> {
