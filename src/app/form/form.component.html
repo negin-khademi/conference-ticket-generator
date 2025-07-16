@@ -31,7 +31,7 @@
             <p class="text-custom_neutral-300 mb-3 text-left">{{ 'upload avatar' | titlecase }}</p>
           </div>
           <!-- upload image -->
-          <div
+          <div tabindex="0"
             class="max-w-md rounded-xl bg-custom_neutral-500 bg-opacity-20 shadow-lg border border-dashed border-custom_neutral-500 p-3 flex flex-col  items-center w-full focus:outline focus:outline-1 focus:outline-custom_neutral-300 focus:outline-offset-2">
             <input #imageInput type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden">
             <img class=" bg-custom_neutral-700 rounded-lg cursor-pointer
