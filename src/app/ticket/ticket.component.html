@@ -29,29 +29,29 @@
     </div>
 
     <!-- image -->
+
     <div class="flex justify-center items-center px-4 py-6">
       <div class="relative w-full max-w-md bg-no-repeat bg-center bg-contain md:bg-cover pointer-events-none"
         style="background-image: url('/images/pattern-ticket.svg')">
-        <!-- Card Content -->
-        <div class="relative z-10 p-4 md:p-6">
-          <!-- Top Row -->
-          <div class="flex justify-between items-center">
+
+        <div class="relative z-10 p-4 md:p-6 ">
+
+          <div class="flex justify-between items-center bg-custom-fix">
             <img src="/images/logo-full.svg" class="w-24 md:w-40" alt="Logo" />
             <span
-              class="translate-x-[250%] absolute left-1/2 top-[40%] md:translate-x-[320%] rotate-90 text-sm md:text-base text-custom_neutral-500">
+              class="code-custom-fix translate-x-[250%] absolute left-1/2 top-[40%] md:translate-x-[320%] rotate-90 text-sm md:text-base text-custom_neutral-500">
               #01609
             </span>
           </div>
 
-          <!-- Location & Date -->
+
           <p class="text-custom_neutral-500 text-xs md:text-sm mt-2">
             {{ currentDateTime | date: 'MMM d, y' }}, Austin Tx
           </p>
 
-          <!-- Divider -->
+
           <hr class="my-4 border-custom_neutral-700/30" />
 
-          <!-- Profile Info -->
           <div class="flex items-center gap-4">
             <img [src]="receiveData.value.url || 'images/image-avatar.jpg'"
               class="w-12 h-12 md:w-20 md:h-20 rounded-lg object-cover" alt="Avatar" />
