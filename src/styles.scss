@@ -39,4 +39,10 @@
 		background-clip: text;
 		color: transparent;
 	}
+
+	/* Add this to your global styles.css or styles.scss */
+	input:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0px 1000px hsl(245, 19%, 35%) inset !important; /* replace with your bg color */
+		-webkit-text-fill-color: hsl(252, 6%, 83%) !important;
+	}
 }
