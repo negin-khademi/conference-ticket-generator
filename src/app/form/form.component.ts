@@ -91,7 +91,6 @@ export class FormComponent {
 	}
 	onFileInputTouched() {
 		if (this.urlControl) {
-			this.urlControl.markAsDirty();
 			this.urlControl.markAsTouched();
 		}
 	}
