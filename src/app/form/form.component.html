@@ -51,7 +51,7 @@
             }
           </div>
           <!-- error handling for upload image -->
-          <div class="sub mt-1 flex justify-start">
+          <div class="sub mt-2 flex justify-start">
             <img class="w-3 {{urlControl?.value ? 'color-custom_orange-700': 'color-custom_neutral-700'}}"
               src="images/icon-info.svg" alt="icon-info" />
             @if(urlControl?.errors?.['tooLarge']){
@@ -78,7 +78,7 @@
 
           @if((nameControl?.touched || submitted) && (nameControl?.hasError('required'))){
 
-          <p class="text-xxs text-custom_orange-700 ms-2 ">Please enter your name. name is required.
+          <p class="text-xxs text-custom_orange-700 ms-2 mt-2">Please enter your name. name is required.
           </p>}
 
           <!-- email -->
@@ -93,12 +93,12 @@
           </div>
 
           @if((emailControl?.touched || submitted) && emailControl?.invalid) {
-          <div class="text-xxs text-custom_orange-700 mt-1 ms-2">
+          <div class="text-xxs text-custom_orange-700 mt-2 ms-2 ">
             @if (emailControl?.hasError('required')) {
-            <div>Email is required.</div>
+            <div class="mt-2">Email is required.</div>
             }
             @else if (emailControl?.hasError('email')) {
-            <div>Email is invalid</div>
+            <div class="mt-2">Email is invalid</div>
             }
           </div>
           }
@@ -114,9 +114,9 @@
           </div>
           @if((gitControl?.touched || submitted) && gitControl?.invalid) {
           @if(gitControl?.hasError('required')){
-          <p class="text-xxs text-custom_orange-700 ms-2">Please enter your github username. It's is required.
+          <p class="text-xxs text-custom_orange-700 ms-2 mt-2">Please enter your github username. It's is required.
           </p>}@if (gitControl?.hasError('notFound')) {
-          <p class="text-xxs text-custom_orange-700 ms-2">GitHub username not found.</p>
+          <p class="text-xxs text-custom_orange-700 ms-2 mt-2">GitHub username not found.</p>
           }
           }
           <div class="w-full max-w-md mt-4">
