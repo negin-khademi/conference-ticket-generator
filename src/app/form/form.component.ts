@@ -89,6 +89,13 @@ export class FormComponent {
 	onChangeImage() {
 		this.onFileSelected(event);
 	}
+	onFileInputTouched() {
+		if (this.urlControl) {
+			this.urlControl.markAsDirty();
+			this.urlControl.markAsTouched();
+		}
+	}
+
 	onSubmit() {
 		if (this.dataForm.invalid) {
 			this.dataForm.markAllAsTouched();
